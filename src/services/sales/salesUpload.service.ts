@@ -1,8 +1,8 @@
 import { Readable } from "stream";
 import readLine from "readline";
-import { ISalesRequest } from "../interfaces";
-import { Sales } from "../entities/sales.entity";
-import AppDataSource from "../data-source";
+import { ISalesRequest } from "../../interfaces";
+import { Sales } from "../../entities/sales.entity";
+import AppDataSource from "../../data-source";
 
 const salesUploadService = async (buffer: Buffer | undefined) => {
   const readableFile = new Readable();

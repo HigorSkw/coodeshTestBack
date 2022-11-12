@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import salesUploadService from "../services/example.service";
+import salesUploadService from "../../services/sales/salesUpload.service";
 
 const salesUploadController = async (req: Request, res: Response) => {
   const { file } = req;
