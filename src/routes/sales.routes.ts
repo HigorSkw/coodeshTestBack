@@ -5,9 +5,9 @@ import sallesGetController from "../controllers/sales/salesGet.controller";
 
 const multerConfig = multer();
 
-const appRouter = Router();
+const salesRouter = Router();
 
-appRouter.post("/", multerConfig.single("file"), salesUploadController);
-appRouter.get("/", sallesGetController);
+salesRouter.post("/", multerConfig.single("file"), salesUploadController);
+salesRouter.get("/", sallesGetController);
 
-export default appRouter;
+export default salesRouter;

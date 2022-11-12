@@ -18,7 +18,7 @@ export class User {
   email: string;
 
   @Column()
-  is_adm: string;
+  is_adm: boolean;
 
   @OneToMany(() => Sales, (sales) => sales.user, {
     cascade: true,
