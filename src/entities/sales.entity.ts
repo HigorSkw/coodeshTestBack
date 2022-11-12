@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, ManyToOne } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { User } from "./user.entity";
 
 @Entity()
 export class Sales {
@@ -20,6 +21,11 @@ export class Sales {
 
   @Column()
   seller: string;
+
+  @ManyToOne(() => User, (user) => user.sales, {
+    onDelete: "CASCADE",
+  })
+  user: User;
 
   constructor() {
     if (!this.id) {
