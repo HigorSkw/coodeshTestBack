@@ -13,7 +13,11 @@ export const verifyPermission = async (
 
   const userRepository = AppDataSource.getRepository(User);
   const user = await userRepository.findOneBy({ id });
-  if (!user) throw new AppError("user not exists");
+  if (!user) throw new AppError("user not exists", 404);
+
+  const validateIdParms = await userRepository.findOneBy({ id: idUser });
+
+  if (!validateIdParms) throw new AppError("user not exists", 404);
 
   if (user.is_adm) return next();
 

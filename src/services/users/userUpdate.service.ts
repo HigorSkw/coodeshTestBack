@@ -17,8 +17,6 @@ const userUpdateService = async ({
   const userRepository = AppDataSource.getRepository(User);
   if (is_adm) throw new AppError("Not possible to update is_adm", 401);
 
-  console.log("cheguei aqui");
-
   await userRepository.update(id, {
     email,
     name,
