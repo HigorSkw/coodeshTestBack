@@ -2,8 +2,8 @@ import { Router } from "express";
 
 import userLoginController from "../controllers/users/userLogin.controller";
 
-const loginRoutes = Router();
+const sessionRoutes = Router();
 
-loginRoutes.post("", userLoginController);
+sessionRoutes.post("", userLoginController);
 
-export default loginRoutes;
+export default sessionRoutes;
