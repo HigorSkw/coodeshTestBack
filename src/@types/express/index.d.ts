@@ -6,7 +6,6 @@ declare global {
     interface Request {
       user: {
         id: string;
-        is_adm: boolean;
       };
       newUser: IUserRequest;
       newUserUpdate: IUserUpdate;
