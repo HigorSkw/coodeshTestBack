@@ -6,7 +6,7 @@ Documentação da API Backend test
   <a href="#endpoints">Endpoints</a>
 </p>
 
-A API tem um total de 7 endpoints, sendo em volta principalmente do usuário, podendo realizar o cadastro do seu perfil e subir arquivo txt na aplicação.
+A API tem um total de 7 endpoints, sendo em volta principalmente do usuário, podendo realizar o cadastro, editar, visualiazar e deletar o seu perfil e, além disto, subir arquivo txt na aplicação.
 O URL base da API é  https://backendskw-txt.herokuapp.com/
 
 <h2 align ='center'> Criação de usuário </h2>
@@ -124,5 +124,95 @@ Nesta rota, caso o usuário logado seja ADMIN, consegue deletar qualquer usuári
 
 `DELETE /user/id - Não é necessário passar corpo na requisição`
 
-
 `DELETE /user/id - FORMATO DA RESPOSTA - STATUS 204`
+
+
+<h2 align ='center'> Upload de arquivos TXT (token)</h2>
+
+`POST /sales - FORMATO DA REQUISIÇÃO (token)`
+
+Formato do arquivo de entrada
+
+![image](https://user-images.githubusercontent.com/92741564/201709695-3d280b2d-aca4-48d3-bfdc-58d8db93e8b0.png)
+
+Tipos de transações - Esses são os valores possíveis para o campo Tipo:
+
+![image](https://user-images.githubusercontent.com/92741564/201709982-85d89d07-acf9-4a25-b411-a1b50cd0d62d.png)
+
+`POST /sales - FORMATO DA RESPOSTA - STATUS 200`
+```json
+{
+  "totalizer": 71000,
+  "sales": [
+		{
+			"type": 1,
+			"date": "2022-01-15T22:20:30.000Z",
+			"product": "CURSO DE BEM-ESTAR            ",
+			"value": 12750,
+			"seller": "JOSE CARLOS"
+		},
+		{
+			"type": 1,
+			"date": "2021-12-03T14:46:02.000Z",
+			"product": "DOMINANDO INVESTIMENTOS       ",
+			"value": 50000,
+			"seller": "MARIA CANDIDA"
+		},
+		{
+			"type": 2,
+			"date": "2022-01-16T17:13:54.000Z",
+			"product": "CURSO DE BEM-ESTAR            ",
+			"value": 12750,
+			"seller": "THIAGO OLIVEIRA"
+		},
+		{
+			"type": 3,
+			"date": "2022-01-16T17:13:54.000Z",
+			"product": "CURSO DE BEM-ESTAR            ",
+			"value": 4500,
+			"seller": "THIAGO OLIVEIRA"
+		},
+	]
+}
+```
+
+<h2 align ='center'> Listando uploades de arquivos TXT (token)</h2>
+
+Caso o usuário seja ADMIN, retorna todos os uploads realizados na aplicação, caso contrário, retorna apenas os upload feito pelo proprio usuário.
+
+`GET /sales - FORMATO DA REQUISIÇÃO (token)`
+
+````json
+{
+  "totalizer": 71000,
+  "sales": [
+		{
+			"type": 1,
+			"date": "2022-01-15T22:20:30.000Z",
+			"product": "CURSO DE BEM-ESTAR            ",
+			"value": 12750,
+			"seller": "JOSE CARLOS"
+		},
+		{
+			"type": 1,
+			"date": "2021-12-03T14:46:02.000Z",
+			"product": "DOMINANDO INVESTIMENTOS       ",
+			"value": 50000,
+			"seller": "MARIA CANDIDA"
+		},
+		{
+			"type": 2,
+			"date": "2022-01-16T17:13:54.000Z",
+			"product": "CURSO DE BEM-ESTAR            ",
+			"value": 12750,
+			"seller": "THIAGO OLIVEIRA"
+		},
+		{
+			"type": 3,
+			"date": "2022-01-16T17:13:54.000Z",
+			"product": "CURSO DE BEM-ESTAR            ",
+			"value": 4500,
+			"seller": "THIAGO OLIVEIRA"
+		},
+	]
+}
