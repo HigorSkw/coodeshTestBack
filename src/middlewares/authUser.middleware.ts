@@ -18,6 +18,7 @@ export const authUser = (req: Request, res: Response, next: NextFunction) => {
         message: "Invalid token",
       });
     }
+    console.log(decoded.sub);
     req.user = { id: decoded.sub };
   });
   next();
