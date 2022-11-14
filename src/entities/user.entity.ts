@@ -1,11 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Entity, Column, OneToMany, PrimaryColumn } from "typeorm";
 import { Sales } from "./sales.entity";
 import { Exclude } from "class-transformer";
+import { v4 as uuid } from "uuid";
 
 @Entity("users")
 export class User {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+  @PrimaryColumn("uuid")
+  readonly id: string;
 
   @Column({ length: 120 })
   name: string;
@@ -24,4 +25,10 @@ export class User {
     cascade: true,
   })
   sales: Sales[];
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
+    }
+  }
 }
