@@ -2,9 +2,11 @@ import { Request, Response } from "express";
 import salesGetService from "../../services/sales/salesGet.service";
 
 const sallesGetController = async (req: Request, res: Response) => {
-  const salles = await salesGetService();
+  const { id } = req.user;
 
-  return res.json(salles);
+  const sallesValues = await salesGetService(id);
+
+  return res.json(sallesValues);
 };
 
 export default sallesGetController;

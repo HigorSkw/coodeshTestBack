@@ -20,11 +20,6 @@ export const authUser = (req: Request, res: Response, next: NextFunction) => {
       });
     }
     req.user = { is_adm: decoded.is_Adm, id: decoded.sub };
-    console.log({ tenteiFazerUmMiddleware: decoded.is_Adm });
-    console.log({ tenteiFazerUmMiddleware: decoded.sub });
   });
-  if (req.user.is_adm == false) {
-    return res.status(403).json({ message: "user is not admin!" });
-  }
   next();
 };
