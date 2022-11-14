@@ -10,7 +10,6 @@ export const authUser = (req: Request, res: Response, next: NextFunction) => {
       message: "Invalid token",
     });
   }
-
   jwt.verify(token, process.env.SECRET_KEY as string, (error, decoded: any) => {
     if (error) {
       return res.status(403).json({
